@@ -1,0 +1,445 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Our <span>Products</span></h2>
+
+    <div class="row">
+      <!-- Product 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/a1.jpg' %}" alt="AirPods" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">AirPods</h5>
+            <p class="card-text text-danger fw-bold">Rs 4000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'AirPods', 4000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/a2.jpg' %}" alt="AirPods Pro" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">AirPods Pro</h5>
+            <p class="card-text text-danger fw-bold">Rs 4500</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'AirPods Pro', 4500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/a3.jpg' %}" alt="AirPods Max" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">AirPods Max</h5>
+            <p class="card-text text-danger fw-bold">Rs 5000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'AirPods Max', 5000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/SmartPhone 3.jpg' %}" alt="SmartPhone 3" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">SmartPhone</h5>
+            <p class="card-text text-danger fw-bold">Rs 7000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'SmartPhone', 7000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 5 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/SmartPhone 2.jpg' %}" alt="SmartPhone 2" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">SmartPhone Pro</h5>
+            <p class="card-text text-danger fw-bold">Rs 7500</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'SmartPhone Pro', 7500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 6 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/SmartPhone 1.jpg' %}" alt="SmartPhone 1" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">SmartPhone Max</h5>
+            <p class="card-text text-danger fw-bold">Rs 8000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'SmartPhone Max', 8000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 7 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Phone Charger 1.jpg' %}" alt="Phone Charger 1" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone Charger</h5>
+            <p class="card-text text-danger fw-bold">Rs 500</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone Charger', 500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Phone Charger 3.jpg' %}" alt="Phone Charger 3" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone Charger Pro</h5>
+            <p class="card-text text-danger fw-bold">Rs 550</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone Charger Pro', 550)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Phone Charger 2.jpg' %}" alt="Phone Charger 2" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone Charger Max</h5>
+            <p class="card-text text-danger fw-bold">Rs 600</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone Charger Max', 600)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Handfree.jpg' %}" alt="Handfree" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Handfree</h5>
+            <p class="card-text text-danger fw-bold">Rs 300</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Handfree', 300)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Handfree 1.jpg' %}" alt="Handfree 1" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Handfree Pro</h5>
+            <p class="card-text text-danger fw-bold">Rs 350</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Handfree Pro', 350)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Handfree 2.jpg' %}" alt="Handfree 2" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Handfree Max</h5>
+            <p class="card-text text-danger fw-bold">Rs 400</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Handfree Max', 400)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 13 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/Phone 1.jpg' %}" alt="Phone 1" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone</h5>
+            <p class="card-text text-danger fw-bold">Rs 50,000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone', 50000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 14 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/m2.jpg' %}" alt="Phone 2" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone Pro</h5>
+            <p class="card-text text-danger fw-bold">Rs 55,000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone Pro', 55000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 15 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div style="height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/m1.jpg' %}" alt="Phone 1" style="max-width: 90%; max-height: 90%;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Phone Max</h5>
+            <p class="card-text text-danger fw-bold">Rs 60,000</p>
+           <div style="color: #f44336; margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+            <div class="d-flex gap-2">
+              <input type="number" min="1" value="1" class="form-control quantity-input" style="width: 80px;">
+              <button class="btn btn-primary w-100" onclick="addToCart(this, 'Phone Max', 60000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- You can duplicate above .col-md-4 block for more products, just change the image, name, and price -->
+    </div>
+  </div>
+
+   <style>
+    .alert {
+      transition: opacity 0.5s ease;
+    }
+    .alert.hiding {
+      opacity: 0;
+    }
+    .temp-alert {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      min-width: 300px;
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    function addToCart(button, title, price) {
+      const quantityInput = button.parentElement.querySelector('.quantity-input');
+      const quantity = parseInt(quantityInput.value) || 1;
+
+      const product = {
+        title: title,
+        price: price,
+        quantity: quantity
+      };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Check if already exists
+      const existing = cart.findIndex(item => item.title === title);
+      if (existing !== -1) {
+        cart[existing].quantity = parseInt(cart[existing].quantity) + quantity;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Button feedback
+      button.classList.remove("btn-primary");
+      button.classList.add("btn-success");
+      button.innerText = "Added!";
+
+      setTimeout(() => {
+        button.classList.remove("btn-success");
+        button.classList.add("btn-primary");
+        button.innerText = "Add to Cart";
+      }, 1000);
+
+      // Create temporary alert
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-success temp-alert';
+      alertDiv.textContent = '✅ View your order in the cart!';
+      document.body.appendChild(alertDiv);
+
+      // Remove alert after 3 seconds
+      setTimeout(() => {
+        alertDiv.classList.add('hiding');
+        setTimeout(() => alertDiv.remove(), 500);
+      }, 3000);
+    }
+  </script>
+</section>
+{% endblock %}
+
+  

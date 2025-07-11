@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign-Up{% endblock %}
+
+{% block body %}
+<section style="min-height: 100vh; display: flex; align-items: center;">
+  <div style="max-width: 500px; margin: auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+    <h2 style="text-align: center;">Create Account</h2>
+
+    <form id="signupForm" onsubmit="return checkSignup();">
+      {% csrf_token %}
+
+      <div style="margin-bottom: 15px;">
+        <input type="text" id="first_name" placeholder="First Name" required style="width: 100%; padding: 10px;">
+        <div id="firstNameError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="text" id="last_name" placeholder="Last Name" required style="width: 100%; padding: 10px;">
+        <div id="lastNameError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="email" id="email" placeholder="Email" required style="width: 100%; padding: 10px;">
+        <div id="emailError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="tel" id="phone" placeholder="Phone Number" required style="width: 100%; padding: 10px;">
+        <div id="phoneError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="password" id="password1" placeholder="Password (min 8 characters)" required style="width: 100%; padding: 10px;">
+        <div id="password1Error" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="password" id="password2" placeholder="Confirm Password" required style="width: 100%; padding: 10px;">
+        <div id="password2Error" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label><input type="checkbox" id="terms" required> I agree to Terms</label>
+        <div id="termsError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <button type="submit" style="width: 100%; margin-top: 15px; padding: 10px; background: red; color: white; border: none;">Create Account</button>
+    </form>
+
+    <p style="text-align: center; margin-top: 15px;">
+      Already have an account?
+      <a href="{% url 'login' %}" style="color: red;">Login Here</a>
+    </p>
+  </div>
+</section>
+
+<script>
+function checkSignup() {
+  // Clear previous errors
+  document.querySelectorAll('[id$="Error"]').forEach(el => el.textContent = '');
+
+  let isValid = true;
+  let firstName = document.getElementById('first_name').value.trim();
+  let lastName = document.getElementById('last_name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let phone = document.getElementById('phone').value.trim();
+  let pass1 = document.getElementById('password1').value.trim();
+  let pass2 = document.getElementById('password2').value.trim();
+  let termsChecked = document.getElementById('terms').checked;
+
+  // Validate first name
+  if (firstName === '') {
+    document.getElementById('firstNameError').textContent = "First name is required";
+    isValid = false;
+  }
+
+  // Validate last name
+  if (lastName === '') {
+    document.getElementById('lastNameError').textContent = "Last name is required";
+    isValid = false;
+  }
+
+  // Validate email
+  if (email === '') {
+    document.getElementById('emailError').textContent = "Email is required";
+    isValid = false;
+  } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+    document.getElementById('emailError').textContent = "Please enter a valid email";
+    isValid = false;
+  }
+
+  // Validate phone
+  if (phone === '') {
+    document.getElementById('phoneError').textContent = "Phone number is required";
+    isValid = false;
+  }
+
+  // Validate password
+  if (pass1 === '') {
+    document.getElementById('password1Error').textContent = "Password is required";
+    isValid = false;
+  } else if (pass1.length < 8) {
+    document.getElementById('password1Error').textContent = "Password must be at least 8 characters";
+    isValid = false;
+  }
+
+  // Validate password confirmation
+  if (pass2 === '') {
+    document.getElementById('password2Error').textContent = "Please confirm your password";
+    isValid = false;
+  } else if (pass1 !== pass2) {
+    document.getElementById('password2Error').textContent = "Passwords do not match";
+    isValid = false;
+  }
+
+  // Validate terms checkbox
+  if (!termsChecked) {
+    document.getElementById('termsError').textContent = "You must agree to the terms";
+    isValid = false;
+  }
+
+  if (isValid) {
+    // Save data to localStorage
+    localStorage.setItem("signup_name", firstName + " " + lastName);
+    localStorage.setItem("signup_email", email);
+    localStorage.setItem("signup_password", pass1);
+
+    // Show success message
+    document.getElementById('signupForm').insertAdjacentHTML('beforebegin', 
+      '<div style="background: #dff0d8; color: #3c763d; padding: 10px; margin-bottom: 15px; border-radius: 4px;">Account created successfully! Redirecting to login...</div>'
+    );
+    
+    // Redirect after 2 seconds
+    setTimeout(() => {
+      window.location.href = "{% url 'login' %}";
+    }, 2000);
+  }
+
+  return false; // prevent actual form submission
+}
+</script>
+{% endblock %}

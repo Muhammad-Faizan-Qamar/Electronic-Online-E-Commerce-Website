@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Contact <span>Us</span></h2>
+
+    <!-- ✅ Success Message Box -->
+    <div id="confirmation-message" class="alert alert-success text-center"
+         style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; min-width: 300px;">
+      ✅ Your Message has been Sent Successfully!
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+      
+      <!-- 📍 Contact Info -->
+      <div style="flex: 1 1 400px;">
+        <h3 style="font-size: 24px; margin-bottom: 20px;">Get in Touch</h3>
+
+        <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+          <div style="font-size: 24px; color: #f44336; margin-right: 15px;">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 5px;">Our Location</h4>
+            <p>XYZ Road, ABC Building, Mughalpura, Lahore</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+          <div style="font-size: 24px; color: #f44336; margin-right: 15px;">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 5px;">Phone Number</h4>
+            <p>+92 123456789</p>
+            <p>Monday to Saturday, 10am to 6pm</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+          <div style="font-size: 24px; color: #f44336; margin-right: 15px;">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 5px;">Email Address</h4>
+            <p>info@fsproducts.com</p>
+            <p>Email us your query</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📬 Contact Form -->
+      <div style="flex: 1 1 400px;">
+        <h3 style="font-size: 24px; margin-bottom: 20px;">Send Us a Message</h3>
+
+        <form id="contactForm"
+              style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          {% csrf_token %}
+          
+          <div style="margin-bottom: 20px;">
+            <label for="name" style="display: block; margin-bottom: 5px; font-weight: 500;">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label for="email" style="display: block; margin-bottom: 5px; font-weight: 500;">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label for="subject" style="display: block; margin-bottom: 5px; font-weight: 500;">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label for="message" style="display: block; margin-bottom: 5px; font-weight: 500;">Your Message</label>
+            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JS -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+    const successBox = document.getElementById("confirmation-message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Show success message
+      successBox.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Hide message after 3 seconds
+      setTimeout(() => {
+        successBox.style.display = "none";
+      }, 3000);
+
+      // Reset the form
+      form.reset();
+    });
+  });
+</script>
+
+<!-- Styles -->
+<style>
+  .alert {
+    transition: opacity 0.5s ease;
+  }
+
+  .alert.hiding {
+    opacity: 0;
+  }
+</style>
+{% endblock %}

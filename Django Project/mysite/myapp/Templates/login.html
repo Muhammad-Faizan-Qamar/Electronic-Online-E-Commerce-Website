@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<section style="min-height: 100vh; display: flex; align-items: center;">
+  <div style="max-width: 500px; margin: auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+    <h2 style="text-align: center;">Login</h2>
+
+    <form id="loginForm" action="{% url 'home' %}" method="POST" onsubmit="return checkLogin();">
+      {% csrf_token %}
+
+      <div style="margin-bottom: 15px;">
+        <input type="email" id="email" placeholder="Email" required style="width: 100%; padding: 10px;">
+        <div id="emailError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <input type="password" id="password" placeholder="Password" required style="width: 100%; padding: 10px;">
+        <div id="passwordError" style="color: red; font-size: 12px; margin-top: 5px;"></div>
+      </div>
+
+      <button type="submit" style="width: 100%; margin-top: 15px; padding: 10px; background: red; color: white; border: none;">Login</button>
+    </form>
+
+    <p style="text-align: center; margin-top: 15px;">
+      Don't have an account?
+      <a href="{% url 'signup' %}" style="color: red;">Sign Up Here</a>
+    </p>
+  </div>
+</section>
+
+<script>
+function checkLogin() {
+  let isValid = true;
+
+  // Clear previous errors
+  document.getElementById('emailError').textContent = '';
+  document.getElementById('passwordError').textContent = '';
+
+  let email = document.getElementById('email').value.trim();
+  let password = document.getElementById('password').value.trim();
+
+  // Get stored signup data from localStorage
+  let savedEmail = localStorage.getItem("signup_email");
+  let savedPassword = localStorage.getItem("signup_password");
+
+  if (!savedEmail || !savedPassword) {
+    alert("No account found. Please sign up first.");
+    window.location.href = "{% url 'signup' %}";
+    return false;
+  }
+
+  if (email !== savedEmail) {
+    document.getElementById('emailError').textContent = "Email does not match.";
+    isValid = false;
+  }
+
+  if (password !== savedPassword) {
+    document.getElementById('passwordError').textContent = "Incorrect password.";
+    isValid = false;
+  }
+
+  return isValid;
+}
+</script>
+{% endblock %}
